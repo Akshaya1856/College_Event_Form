@@ -112,21 +112,25 @@ def certificate(name, branch, rollno, events):
 
     return send_file(file_name, as_attachment=True)
 # ------------------ LOGIN PAGE ------------------
+# ------------------ LOGIN PAGE ------------------
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
         username = request.form['username']
-        password = request.form['password']
+        password = request.form['password']  # You need to catch the password from the form!
 
-        # Simple admin credentials
-        if username == "Akshaya" and password == "1856":
+        # This looks for the password on the server settings, 
+        # but uses "1856" as a backup (fallback)
+        import os
+        CORRECT_PASSWORD = os.environ.get('ADMIN_PASSWORD', '1856')
+
+        if username == "Akshaya" and password == CORRECT_PASSWORD:
             session['admin'] = True
             return redirect('/admin')
         else:
             return "Invalid Login!"
 
     return render_template('login.html')
-
 # ------------------ ADMIN PAGE ------------------
 @app.route('/admin')
 def admin():
