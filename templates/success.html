@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Success</title>
+</head>
+<body>
+
+<h2>Registration Successful 🎉</h2>
+
+<p><b>Name:</b> {{ name }}</p>
+<p><b>Branch:</b> {{ branch }}</p>
+<p><b>Roll No:</b> {{ rollno }}</p>
+<p><b>Events:</b> {{ events }}</p>
+
+<h3>Registration Fee: ₹200</h3>
+
+<img src="{{ url_for('static', filename='qr.png') }}" width="200">
+
+<br><br>
+
+<button onclick="confirmPayment()">I Have Paid</button>
+
+<p id="paymentStatus"></p>
+
+<script>
+function confirmPayment() {
+    let confirmPay = confirm("Have you completed the payment?");
+    if(confirmPay){
+        document.getElementById("paymentStatus").innerText = "Payment Successful ✅";
+    } else {
+        document.getElementById("paymentStatus").innerText = "Payment Pending ❌";
+    }
+}
+</script>
+
+<a href="/certificate/{{ name }}/{{ branch }}/{{ rollno }}/{{ events | urlencode }}">
+    <button>Download Certificate</button>
+</a>
+</body>
+</html>

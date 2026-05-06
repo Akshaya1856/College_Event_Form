@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Event Registration</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<h2>College Event Registration</h2>
+<p style="color:red">* All fields are mandatory</p>
+
+<form action="/register" method="post">
+
+<label>Name *</label><br>
+<input type="text" name="name" required><br>
+
+<label>Branch *</label><br>
+<select name="branch" required>
+    <option value="">Select Branch</option>
+    <option>CSE</option>
+    <option>CSE (AIML)</option>
+    <option>CSE (DS)</option>
+    <option>ECE</option>
+    <option>CIVIL</option>
+    <option>IT</option>
+    <option>MECHANICAL</option>
+    <option>EEE</option>
+</select><br>
+
+<label>Roll No *</label><br>
+<input type="text" name="rollno" required><br>
+
+<label>Email *</label><br>
+<input type="email" name="email" required><br>
+
+<label>Phone *</label><br>
+<input type="text" name="phone" pattern="[0-9]{10}" required><br>
+
+<h4>Select Events *</h4>
+
+<b>Technical:</b><br>
+<input type="checkbox" name="event" value="Hackathon"> Hackathon<br>
+<input type="checkbox" name="event" value="Coding Contest"> Coding Contest<br>
+<input type="checkbox" name="event" value="Technical Quiz"> Technical Quiz<br>
+
+<br>
+
+<b>Non-Technical:</b><br>
+<input type="checkbox" name="event" value="Poster Presentation"> Poster Presentation<br>
+<input type="checkbox" name="event" value="Debate"> Debate<br>
+
+<br>
+
+<b>Cultural:</b><br>
+<input type="checkbox" name="event" value="Dance"> Dance<br>
+<input type="checkbox" name="event" value="Singing"> Singing<br>
+
+<br>
+
+<b>Sports:</b><br>
+<input type="checkbox" name="event" value="Cricket"> Cricket<br>
+<input type="checkbox" name="event" value="Badminton"> Badminton<br>
+<input type="checkbox" name="event" value="Kabaddi"> Kabaddi<br>
+<input type="checkbox" name="event" value="Volleyball"> Volleyball<br>
+<input type="checkbox" name="event" value="Basketball"> Basketball<br>
+<input type="checkbox" name="event" value="Chess"> Chess<br>
+<input type="checkbox" name="event" value="Carrom"> Carrom Board<br><button type="submit">Register</button>
+
+</form>
+
+</body>
+</html>
